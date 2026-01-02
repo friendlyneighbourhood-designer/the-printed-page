@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import CategoryCard from "@/components/books/CategoryCard";
 import { categories, books } from "@/data/books";
@@ -9,16 +10,22 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Editorial Introduction */}
-      <section className="container-narrow py-12 border-b border-border-subtle">
-        <h1 className="editorial-headline mb-6 max-w-3xl">
-          A curated catalogue of essential reading
+      {/* Hero Section */}
+      <section className="container-narrow py-16 md:py-24 border-b border-border-subtle">
+        <p className="uppercase-label text-muted-foreground mb-4">Est. 2024</p>
+        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6 max-w-4xl">
+          Books for the <em className="font-normal">serious</em> reader
         </h1>
-        <p className="body-text text-muted-foreground max-w-2xl">
-          Aldine Press offers a carefully selected collection of academic and general interest books. 
-          We work directly with publishers to bring you thoughtful editions of classic texts 
-          and contemporary scholarship across philosophy, history, literature, and the sciences.
+        <p className="body-text text-muted-foreground max-w-xl mb-8 text-base md:text-lg">
+          A curated catalogue of academic and general interest books. Philosophy, history, 
+          literature, science — carefully selected editions from leading publishers.
         </p>
+        <Link 
+          to="/categories" 
+          className="inline-block border border-foreground text-foreground px-6 py-3 text-sm font-sans tracking-wide hover:bg-foreground hover:text-background transition-colors"
+        >
+          Browse the Catalogue
+        </Link>
       </section>
 
       {/* Categories Grid */}
