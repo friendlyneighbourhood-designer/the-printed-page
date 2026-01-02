@@ -9,13 +9,11 @@ const Categories = () => {
 
   return (
     <Layout>
-      <section className="container-narrow py-6">
-        <h1 className="catalogue-title mb-2">Categories</h1>
-        <p className="text-sm text-muted-foreground max-w-lg mb-6">
-          Browse by subject. Selected titles from leading publishers.
-        </p>
+      <section className="container-wide py-12">
+        <h1 className="section-heading">All Categories</h1>
+        <p className="section-subheading">Browse our complete collection by subject</p>
         
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-3 gap-y-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {categories.map(category => (
             <CategoryCard
               key={category.slug}

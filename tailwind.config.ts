@@ -9,13 +9,13 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1140px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        serif: ["Crimson Text", "Georgia", "serif"],
-        sans: ["system-ui", "sans-serif"],
+        serif: ["Playfair Display", "Georgia", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,10 +23,8 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        page: "hsl(var(--page-bg))",
-        content: "hsl(var(--content-bg))",
-        link: "hsl(var(--link-color))",
-        "border-subtle": "hsl(var(--border-subtle))",
+        navy: "hsl(var(--navy))",
+        "navy-foreground": "hsl(var(--navy-foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -10,6 +10,8 @@ export interface Book {
   pages: number;
   publicationDate: string;
   description: string;
+  isStaffPick?: boolean;
+  isComingSoon?: boolean;
 }
 
 export interface Category {
@@ -24,19 +26,19 @@ export const categories: Category[] = [
     slug: "philosophy",
     name: "Philosophy",
     description: "Works on ethics, metaphysics, epistemology, and the history of philosophical thought.",
-    coverImage: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop"
+    coverImage: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop"
   },
   {
     slug: "history",
     name: "History",
     description: "Historical scholarship spanning ancient civilizations to the modern era.",
-    coverImage: "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=400&h=600&fit=crop"
+    coverImage: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=600&fit=crop"
   },
   {
     slug: "literature",
     name: "Literature",
     description: "Fiction, poetry, and literary criticism from around the world.",
-    coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop"
+    coverImage: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400&h=600&fit=crop"
   },
   {
     slug: "science",
@@ -60,7 +62,7 @@ export const categories: Category[] = [
     slug: "classics",
     name: "Classics",
     description: "Greek and Latin texts in translation, with scholarly introductions.",
-    coverImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop"
+    coverImage: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop"
   },
   {
     slug: "biography",
@@ -82,7 +84,8 @@ export const books: Book[] = [
     isbn: "978-0521558181",
     pages: 128,
     publicationDate: "1996",
-    description: "Descartes' Meditations on First Philosophy continues to be a standard text at most university philosophy departments. It is a key text in Western philosophy as it introduces many of the ideas that are still debated by philosophers today, including the mind-body problem, the notion of the self, and the problem of skepticism. This edition includes the complete text of the Meditations, along with extensive commentary and notes."
+    description: "Descartes' Meditations on First Philosophy continues to be a standard text at most university philosophy departments. It is a key text in Western philosophy as it introduces many of the ideas that are still debated by philosophers today, including the mind-body problem, the notion of the self, and the problem of skepticism.",
+    isStaffPick: true
   },
   {
     id: "2",
@@ -95,7 +98,7 @@ export const books: Book[] = [
     isbn: "978-0199535767",
     pages: 416,
     publicationDate: "2008",
-    description: "Plato's Republic is one of the most important and widely read books in the history of philosophy. It presents Socrates' vision of the ideal state and the philosopher-king who rules it with wisdom and justice. This new translation captures the dramatic power and philosophical depth of the original Greek text."
+    description: "Plato's Republic is one of the most important and widely read books in the history of philosophy. It presents Socrates' vision of the ideal state and the philosopher-king who rules it with wisdom and justice."
   },
   {
     id: "3",
@@ -108,7 +111,8 @@ export const books: Book[] = [
     isbn: "978-0140437645",
     pages: 1232,
     publicationDate: "2001",
-    description: "Edward Gibbon's masterpiece of historical analysis traces the decline of the Roman Empire from the height of the Antonine age to the fall of Constantinople in 1453. This abridged edition preserves Gibbon's magnificent prose while making his insights accessible to modern readers."
+    description: "Edward Gibbon's masterpiece of historical analysis traces the decline of the Roman Empire from the height of the Antonine age to the fall of Constantinople in 1453.",
+    isStaffPick: true
   },
   {
     id: "4",
@@ -121,7 +125,8 @@ export const books: Book[] = [
     isbn: "978-1400079988",
     pages: 1296,
     publicationDate: "2008",
-    description: "Tolstoy's epic tale of five aristocratic families during the Napoleonic Wars is considered one of the greatest novels ever written. This acclaimed translation by Richard Pevear and Larissa Volokhonsky captures the beauty and complexity of Tolstoy's prose."
+    description: "Tolstoy's epic tale of five aristocratic families during the Napoleonic Wars is considered one of the greatest novels ever written.",
+    isStaffPick: true
   },
   {
     id: "5",
@@ -134,7 +139,7 @@ export const books: Book[] = [
     isbn: "978-0226458120",
     pages: 264,
     publicationDate: "2012",
-    description: "Thomas Kuhn's influential work challenged the prevailing view of science as a steady, cumulative acquisition of knowledge. His concept of 'paradigm shifts' has become essential vocabulary in understanding how scientific progress actually occurs."
+    description: "Thomas Kuhn's influential work challenged the prevailing view of science as a steady, cumulative acquisition of knowledge. His concept of 'paradigm shifts' has become essential vocabulary."
   },
   {
     id: "6",
@@ -147,7 +152,7 @@ export const books: Book[] = [
     isbn: "978-0199537198",
     pages: 624,
     publicationDate: "2008",
-    description: "Vasari's biographies of Renaissance artists remain the primary source for understanding the lives and works of artists from Cimabue to Michelangelo. This selection includes the most important lives, with extensive notes and illustrations."
+    description: "Vasari's biographies of Renaissance artists remain the primary source for understanding the lives and works of artists from Cimabue to Michelangelo."
   },
   {
     id: "7",
@@ -160,7 +165,7 @@ export const books: Book[] = [
     isbn: "978-0156701532",
     pages: 576,
     publicationDate: "1994",
-    description: "Hannah Arendt's analysis of the origins and mechanisms of totalitarian movements in the twentieth century remains essential reading for understanding modern political history and the threats to democratic society."
+    description: "Hannah Arendt's analysis of the origins and mechanisms of totalitarian movements in the twentieth century remains essential reading."
   },
   {
     id: "8",
@@ -173,7 +178,8 @@ export const books: Book[] = [
     isbn: "978-0374525743",
     pages: 592,
     publicationDate: "2018",
-    description: "Emily Wilson's groundbreaking translation of Homer's Odyssey brings new life to this ancient epic. Her lucid, rhythmic verse captures the adventure, poetry, and humanity of Odysseus's journey home from the Trojan War."
+    description: "Emily Wilson's groundbreaking translation of Homer's Odyssey brings new life to this ancient epic.",
+    isStaffPick: true
   },
   {
     id: "9",
@@ -186,7 +192,7 @@ export const books: Book[] = [
     isbn: "978-0140436624",
     pages: 1280,
     publicationDate: "2008",
-    description: "Boswell's biography of Samuel Johnson is widely regarded as the greatest biography in the English language. This vivid portrait of the great lexicographer and man of letters remains an enduring masterpiece of literary art."
+    description: "Boswell's biography of Samuel Johnson is widely regarded as the greatest biography in the English language."
   },
   {
     id: "10",
@@ -199,7 +205,8 @@ export const books: Book[] = [
     isbn: "978-0061575594",
     pages: 512,
     publicationDate: "2008",
-    description: "Heidegger's Being and Time is one of the most important philosophical works of the twentieth century. This translation by John Macquarrie and Edward Robinson remains the standard English version of this challenging but rewarding text."
+    description: "Heidegger's Being and Time is one of the most important philosophical works of the twentieth century.",
+    isComingSoon: true
   },
   {
     id: "11",
@@ -212,7 +219,8 @@ export const books: Book[] = [
     isbn: "978-0671201586",
     pages: 895,
     publicationDate: "1967",
-    description: "Bertrand Russell's sweeping survey of Western philosophy from the pre-Socratics to the early twentieth century is both a scholarly achievement and a work of literature. Russell's wit and clarity make complex ideas accessible to general readers."
+    description: "Bertrand Russell's sweeping survey of Western philosophy from the pre-Socratics to the early twentieth century.",
+    isComingSoon: true
   },
   {
     id: "12",
@@ -225,7 +233,7 @@ export const books: Book[] = [
     isbn: "978-0679772538",
     pages: 368,
     publicationDate: "1996",
-    description: "The first volume of Hobsbawm's acclaimed trilogy covering the long nineteenth century. This volume examines the dual revolution—the French Revolution and the Industrial Revolution—that transformed the world between 1789 and 1848."
+    description: "The first volume of Hobsbawm's acclaimed trilogy covering the long nineteenth century."
   }
 ];
 
@@ -239,4 +247,12 @@ export const getBookById = (id: string): Book | undefined => {
 
 export const getCategoryBySlug = (slug: string): Category | undefined => {
   return categories.find(cat => cat.slug === slug);
+};
+
+export const getStaffPicks = (): Book[] => {
+  return books.filter(book => book.isStaffPick);
+};
+
+export const getComingSoon = (): Book[] => {
+  return books.filter(book => book.isComingSoon);
 };

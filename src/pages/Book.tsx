@@ -1,104 +1,90 @@
 import { useParams, Link } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { getBookById, getCategoryBySlug } from "@/data/books";
 
 const Book = () => {
   const { id } = useParams<{ id: string }>();
-  const book = id ? getBookById(id) : undefined;
-  const category = book ? getCategoryBySlug(book.category) : undefined;
+  const book = getBookById(id || "");
 
   if (!book) {
     return (
       <Layout>
-        <section className="container-narrow py-8">
-          <h1 className="catalogue-title mb-2">Book not found</h1>
-          <p className="text-sm text-muted-foreground">
-            <Link to="/">Return to catalogue</Link>
-          </p>
-        </section>
+        <div className="container-wide py-16 text-center">
+          <h1 className="section-heading">Book not found</h1>
+          <Link to="/categories" className="btn-primary inline-block mt-4">
+            Browse Books
+          </Link>
+        </div>
       </Layout>
     );
   }
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello, I would like to order:\n\n${book.title} by ${book.author}\nISBN: ${book.isbn}\nPrice: $${book.price.toFixed(2)}`
-  );
-  const whatsappLink = `https://wa.me/1234567890?text=${whatsappMessage}`;
+  const category = getCategoryBySlug(book.category);
 
   return (
     <Layout>
-      <section className="container-narrow py-6">
-        {/* Breadcrumb */}
-        <nav className="mb-4">
-          <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <li><Link to="/">Home</Link></li>
-            <li>/</li>
-            {category && (
-              <>
-                <li><Link to={`/category/${category.slug}`}>{category.name}</Link></li>
-                <li>/</li>
-              </>
-            )}
-            <li className="text-foreground truncate max-w-[180px]">{book.title}</li>
-          </ol>
+      <section className="container-wide py-12">
+        <nav className="text-sm text-muted-foreground mb-8">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-2">/</span>
+          <Link to="/categories" className="hover:text-foreground">Categories</Link>
+          <span className="mx-2">/</span>
+          {category && (
+            <>
+              <Link to={`/category/${category.slug}`} className="hover:text-foreground">
+                {category.name}
+              </Link>
+              <span className="mx-2">/</span>
+            </>
+          )}
+          <span className="text-foreground">{book.title}</span>
         </nav>
 
-        {/* Book Details - Two Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-          {/* Cover Image */}
-          <div>
-            <div className="aspect-[2/3] bg-muted overflow-hidden">
-              <img 
-                src={book.coverImage} 
-                alt={book.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div className="flex justify-center lg:justify-start">
+            <img src={book.coverImage} alt={book.title} className="w-full max-w-sm shadow-xl" />
           </div>
 
-          {/* Book Information */}
           <div>
-            <h1 className="text-xl md:text-2xl leading-tight mb-1">{book.title}</h1>
-            <p className="text-sm text-muted-foreground mb-3">{book.author}</p>
-            <p className="text-sm text-muted-foreground mb-4">${book.price.toFixed(2)}</p>
+            <h1 className="font-serif text-3xl md:text-4xl font-bold mb-4">{book.title}</h1>
+            <p className="text-xl text-muted-foreground mb-6">by {book.author}</p>
+            <p className="text-3xl font-serif font-semibold mb-8">${book.price.toFixed(2)}</p>
+            <p className="text-muted-foreground leading-relaxed mb-8">{book.description}</p>
 
-            {/* Order Button */}
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-foreground text-foreground px-4 py-2 text-xs no-underline hover:bg-foreground hover:text-background mb-6"
-            >
-              Order via WhatsApp
-            </a>
-
-            {/* Description */}
-            <div className="border-t border-border-subtle pt-4 mb-4">
-              <p className="section-label mb-2">Description</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {book.description}
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <button className="btn-primary flex items-center justify-center gap-2">
+                <ShoppingCart className="w-4 h-4" />
+                Add to Cart
+              </button>
+              <a
+                href={`https://wa.me/1234567890?text=I'd like to order: ${book.title}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-center"
+              >
+                Order via WhatsApp
+              </a>
             </div>
 
-            {/* Book Details */}
-            <div className="border-t border-border-subtle pt-4">
-              <p className="section-label mb-2">Details</p>
-              <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs">
-                <div className="flex justify-between">
+            <div className="border-t border-border pt-8">
+              <h2 className="font-serif text-xl font-semibold mb-4">Details</h2>
+              <dl className="grid grid-cols-2 gap-4 text-sm">
+                <div>
                   <dt className="text-muted-foreground">Publisher</dt>
-                  <dd>{book.publisher}</dd>
+                  <dd className="font-medium">{book.publisher}</dd>
                 </div>
-                <div className="flex justify-between">
-                  <dt className="text-muted-foreground">Date</dt>
-                  <dd>{book.publicationDate}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt className="text-muted-foreground">Pages</dt>
-                  <dd>{book.pages}</dd>
-                </div>
-                <div className="flex justify-between">
+                <div>
                   <dt className="text-muted-foreground">ISBN</dt>
-                  <dd>{book.isbn}</dd>
+                  <dd className="font-medium">{book.isbn}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Pages</dt>
+                  <dd className="font-medium">{book.pages}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Publication Date</dt>
+                  <dd className="font-medium">{book.publicationDate}</dd>
                 </div>
               </dl>
             </div>

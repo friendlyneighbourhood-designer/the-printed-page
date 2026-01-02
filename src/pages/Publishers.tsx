@@ -1,32 +1,32 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { books } from "@/data/books";
 
 const Publishers = () => {
-  const publisherCounts = books.reduce((acc, book) => {
-    acc[book.publisher] = (acc[book.publisher] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
-
-  const publishers = Object.entries(publisherCounts)
-    .sort((a, b) => a[0].localeCompare(b[0]));
+  const publishers = [...new Set(books.map(book => book.publisher))];
+  
+  const getPublisherBookCount = (publisher: string) => {
+    return books.filter(book => book.publisher === publisher).length;
+  };
 
   return (
     <Layout>
-      <section className="container-narrow py-6">
-        <h1 className="catalogue-title mb-2">Publishers</h1>
-        <p className="text-sm text-muted-foreground max-w-lg mb-4">
-          Publishers represented in our catalogue.
-        </p>
-        
-        <div className="border-t border-border-subtle pt-4">
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1.5 text-sm">
-            {publishers.map(([publisher, count]) => (
-              <li key={publisher} className="flex justify-between border-b border-border-subtle py-1.5">
-                <span>{publisher}</span>
-                <span className="text-xs text-muted-foreground">{count}</span>
-              </li>
-            ))}
-          </ul>
+      <section className="container-wide py-12">
+        <h1 className="section-heading">Our Publishers</h1>
+        <p className="section-subheading">We work with leading academic and literary publishers</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {publishers.map(publisher => (
+            <div key={publisher} className="p-6 border border-border hover:border-navy transition-colors">
+              <h3 className="font-serif text-lg font-semibold mb-2">{publisher}</h3>
+              <p className="text-sm text-muted-foreground">{getPublisherBookCount(publisher)} titles available</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground mb-4">Looking for a specific title or publisher?</p>
+          <Link to="/contact" className="btn-primary inline-block">Contact Us</Link>
         </div>
       </section>
     </Layout>
