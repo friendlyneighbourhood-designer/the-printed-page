@@ -10,28 +10,24 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="container-narrow py-16 md:py-24 border-b border-border-subtle">
-        <p className="uppercase-label text-muted-foreground mb-4">Est. 2024</p>
-        <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6 max-w-4xl">
-          Books for the <em className="font-normal">serious</em> reader
+      {/* Editorial Hero */}
+      <section className="container-narrow py-8 border-b border-border-subtle">
+        <h1 className="catalogue-title mb-3">
+          A catalogue of essential reading
         </h1>
-        <p className="body-text text-muted-foreground max-w-xl mb-8 text-base md:text-lg">
-          A curated catalogue of academic and general interest books. Philosophy, history, 
-          literature, science — carefully selected editions from leading publishers.
+        <p className="body-text text-muted-foreground max-w-lg mb-4">
+          Academic and general interest books. Philosophy, history, literature, science — 
+          selected editions from leading publishers.
         </p>
-        <Link 
-          to="/categories" 
-          className="inline-block border border-foreground text-foreground px-6 py-3 text-sm font-sans tracking-wide hover:bg-foreground hover:text-background transition-colors"
-        >
-          Browse the Catalogue
+        <Link to="/categories" className="text-sm">
+          View all categories →
         </Link>
       </section>
 
       {/* Categories Grid */}
-      <section className="container-narrow py-12">
-        <h2 className="uppercase-label text-muted-foreground mb-6">Browse by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-x-4 gap-y-8">
+      <section className="container-narrow py-6">
+        <p className="section-label mb-4">Browse by Category</p>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-3 gap-y-5">
           {categories.map(category => (
             <CategoryCard
               key={category.slug}
@@ -45,24 +41,22 @@ const Index = () => {
       </section>
 
       {/* Recent Additions */}
-      <section className="container-narrow py-12 border-t border-border-subtle">
-        <h2 className="uppercase-label text-muted-foreground mb-6">Recent Additions</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8">
+      <section className="container-narrow py-6 border-t border-border-subtle">
+        <p className="section-label mb-4">Recent Additions</p>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-3 gap-y-5">
           {books.slice(0, 6).map(book => (
-            <a key={book.id} href={`/book/${book.id}`} className="block group">
-              <div className="aspect-[2/3] bg-muted mb-2 overflow-hidden">
+            <Link key={book.id} to={`/book/${book.id}`} className="block">
+              <div className="aspect-[2/3] bg-muted mb-1.5 overflow-hidden">
                 <img 
                   src={book.coverImage} 
                   alt={book.title}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="font-serif text-sm font-bold leading-tight mb-1 group-hover:text-link">
-                {book.title}
-              </h3>
-              <p className="text-xs text-muted-foreground mb-1">{book.author}</p>
+              <h3 className="text-xs leading-tight mb-0.5">{book.title}</h3>
+              <p className="text-xs text-muted-foreground">{book.author}</p>
               <p className="text-xs text-muted-foreground">${book.price.toFixed(2)}</p>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
