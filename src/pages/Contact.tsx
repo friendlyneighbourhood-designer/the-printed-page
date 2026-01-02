@@ -1,54 +1,61 @@
+import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 
 const Contact = () => {
   return (
     <Layout>
-      <section className="container-narrow py-6">
-        <h1 className="catalogue-title mb-2">Contact</h1>
-        <p className="text-sm text-muted-foreground max-w-lg mb-4">
-          For orders or enquiries, please reach out below.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-border-subtle pt-4">
-          {/* Order Enquiries */}
+      <section className="container-wide py-12">
+        <h1 className="section-heading">Contact Us</h1>
+        <p className="section-subheading">We'd love to hear from you</p>
+
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
           <div>
-            <p className="section-label mb-2">Orders</p>
-            <p className="text-sm text-muted-foreground mb-3">
-              To place an order, use the WhatsApp button on any book page, or contact:
-            </p>
-            <dl className="text-xs space-y-1.5">
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground w-16">WhatsApp</dt>
-                <dd><a href="https://wa.me/1234567890">+1 (234) 567-890</a></dd>
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+                <input type="text" id="name" className="w-full px-4 py-3 border border-border bg-background outline-none focus:border-navy transition-colors" placeholder="Your name" />
               </div>
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground w-16">Email</dt>
-                <dd><a href="mailto:orders@aldinepress.com">orders@aldinepress.com</a></dd>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+                <input type="email" id="email" className="w-full px-4 py-3 border border-border bg-background outline-none focus:border-navy transition-colors" placeholder="your@email.com" />
               </div>
-            </dl>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+                <textarea id="message" rows={5} className="w-full px-4 py-3 border border-border bg-background outline-none focus:border-navy transition-colors resize-none" placeholder="Your message..." />
+              </div>
+              <button type="submit" className="btn-primary">Send Message</button>
+            </form>
           </div>
 
-          {/* General Enquiries */}
-          <div>
-            <p className="section-label mb-2">General</p>
-            <p className="text-sm text-muted-foreground mb-3">
-              For partnerships or publishing enquiries:
-            </p>
-            <dl className="text-xs space-y-1.5">
-              <div className="flex gap-2">
-                <dt className="text-muted-foreground w-16">Email</dt>
-                <dd><a href="mailto:info@aldinepress.com">info@aldinepress.com</a></dd>
+          <div className="space-y-8">
+            <div>
+              <h2 className="font-serif text-xl font-semibold mb-4">Get in Touch</h2>
+              <p className="text-muted-foreground leading-relaxed">Have questions about an order or need help finding the perfect book? Our team is here to assist you.</p>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <Mail className="w-5 h-5 text-navy mt-1" />
+                <div>
+                  <p className="font-medium">Email</p>
+                  <a href="mailto:hello@bookpyramid.com" className="text-muted-foreground hover:text-foreground">hello@bookpyramid.com</a>
+                </div>
               </div>
-            </dl>
+              <div className="flex items-start gap-4">
+                <Phone className="w-5 h-5 text-navy mt-1" />
+                <div>
+                  <p className="font-medium">WhatsApp</p>
+                  <a href="https://wa.me/1234567890" className="text-muted-foreground hover:text-foreground">+1 234 567 890</a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <MapPin className="w-5 h-5 text-navy mt-1" />
+                <div>
+                  <p className="font-medium">Address</p>
+                  <p className="text-muted-foreground">123 Literary Lane<br />New York, NY 10001</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Address */}
-        <div className="border-t border-border-subtle mt-4 pt-4">
-          <p className="section-label mb-2">Address</p>
-          <address className="text-xs text-muted-foreground not-italic leading-relaxed">
-            Aldine Press, 123 Publisher's Row, London EC1A 1BB
-          </address>
         </div>
       </section>
     </Layout>

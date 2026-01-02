@@ -1,42 +1,100 @@
 import { Link } from "react-router-dom";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border-subtle bg-content mt-8">
-      <div className="container-narrow py-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-          {/* Brand Description */}
+    <footer className="bg-navy text-navy-foreground mt-16">
+      <div className="container-wide py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* About Us */}
           <div>
-            <p className="mb-2">Aldine Press</p>
-            <p className="text-muted-foreground leading-relaxed">
-              Academic and general interest books. Selected titles from leading publishers.
+            <h3 className="font-serif text-xl font-semibold mb-4">About Us</h3>
+            <p className="text-navy-foreground/80 leading-relaxed">
+              BookPyramid is your destination for premium literature and timeless classics. 
+              We curate the finest books from around the world, bringing you closer to the 
+              heights of literary excellence.
             </p>
           </div>
-          
-          {/* Information Links */}
+
+          {/* Helpful Links */}
           <div>
-            <p className="section-label mb-2">Information</p>
-            <ul className="space-y-1 text-muted-foreground">
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/shipping">Shipping</Link></li>
-              <li><Link to="/returns">Returns</Link></li>
-              <li><Link to="/terms">Terms</Link></li>
+            <h3 className="font-serif text-xl font-semibold mb-4">Helpful Links</h3>
+            <ul className="space-y-2 text-navy-foreground/80">
+              <li>
+                <Link to="/shipping" className="hover:text-navy-foreground transition-colors">
+                  Shipping Information
+                </Link>
+              </li>
+              <li>
+                <Link to="/returns" className="hover:text-navy-foreground transition-colors">
+                  Returns & Refunds
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-navy-foreground transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-navy-foreground transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="hover:text-navy-foreground transition-colors">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
-          
-          {/* Support */}
+
+          {/* Follow Us */}
           <div>
-            <p className="section-label mb-2">Contact</p>
-            <ul className="space-y-1 text-muted-foreground">
-              <li><a href="https://wa.me/1234567890">WhatsApp</a></li>
-              <li><a href="mailto:orders@aldinepress.com">orders@aldinepress.com</a></li>
-            </ul>
+            <h3 className="font-serif text-xl font-semibold mb-4">Follow Us</h3>
+            <p className="text-navy-foreground/80 mb-4">
+              Stay connected for the latest releases and literary inspiration.
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-navy-foreground/10 rounded-full hover:bg-navy-foreground/20 transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-navy-foreground/10 rounded-full hover:bg-navy-foreground/20 transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-navy-foreground/10 rounded-full hover:bg-navy-foreground/20 transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-navy-foreground/10 rounded-full hover:bg-navy-foreground/20 transition-colors"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-border-subtle mt-4 pt-3">
-          <p className="text-xs text-muted-foreground">
-            © 2026 Aldine Press
+
+        {/* Copyright */}
+        <div className="border-t border-navy-foreground/20 mt-10 pt-6 text-center">
+          <p className="text-navy-foreground/60 text-sm">
+            © 2025 BookPyramid. All rights reserved.
           </p>
         </div>
       </div>

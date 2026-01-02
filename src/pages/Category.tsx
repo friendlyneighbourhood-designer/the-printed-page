@@ -1,67 +1,58 @@
 import { useParams, Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import BookCard from "@/components/books/BookCard";
-import { getCategoryBySlug, getBooksByCategory } from "@/data/books";
+import { getBooksByCategory, getCategoryBySlug } from "@/data/books";
 
 const Category = () => {
   const { slug } = useParams<{ slug: string }>();
-  const category = slug ? getCategoryBySlug(slug) : undefined;
-  const categoryBooks = slug ? getBooksByCategory(slug) : [];
+  const category = getCategoryBySlug(slug || "");
+  const categoryBooks = getBooksByCategory(slug || "");
 
   if (!category) {
     return (
       <Layout>
-        <section className="container-narrow py-6">
-          <h1 className="catalogue-title mb-2">Category not found</h1>
-          <p className="text-sm text-muted-foreground">
-            <Link to="/categories">Return to categories</Link>
-          </p>
-        </section>
+        <div className="container-wide py-16 text-center">
+          <h1 className="section-heading">Category not found</h1>
+          <Link to="/categories" className="btn-primary inline-block mt-4">
+            Browse Categories
+          </Link>
+        </div>
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <section className="container-narrow py-6">
-        {/* Breadcrumb */}
-        <nav className="mb-3">
-          <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <li><Link to="/">Home</Link></li>
-            <li>/</li>
-            <li><Link to="/categories">Categories</Link></li>
-            <li>/</li>
-            <li className="text-foreground">{category.name}</li>
-          </ol>
+      <section className="container-wide py-12">
+        <nav className="text-sm text-muted-foreground mb-6">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span className="mx-2">/</span>
+          <Link to="/categories" className="hover:text-foreground">Categories</Link>
+          <span className="mx-2">/</span>
+          <span className="text-foreground">{category.name}</span>
         </nav>
 
-        <h1 className="catalogue-title mb-2">{category.name}</h1>
-        <p className="text-sm text-muted-foreground max-w-lg mb-4">
-          {category.description}
-        </p>
+        <h1 className="section-heading">{category.name}</h1>
+        <p className="section-subheading max-w-2xl">{category.description}</p>
         
-        <div className="border-t border-border-subtle pt-4">
-          <p className="section-label mb-3">
-            {categoryBooks.length} {categoryBooks.length === 1 ? 'title' : 'titles'}
-          </p>
-          
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-3 gap-y-4">
-            {categoryBooks.map(book => (
-              <BookCard
-                key={book.id}
-                id={book.id}
-                title={book.title}
-                author={book.author}
-                price={book.price}
-                coverImage={book.coverImage}
-              />
-            ))}
-          </div>
-          
-          {categoryBooks.length === 0 && (
-            <p className="text-sm text-muted-foreground">No books in this category yet.</p>
-          )}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {categoryBooks.map(book => (
+            <BookCard
+              key={book.id}
+              id={book.id}
+              title={book.title}
+              author={book.author}
+              price={book.price}
+              coverImage={book.coverImage}
+            />
+          ))}
         </div>
+
+        {categoryBooks.length === 0 && (
+          <p className="text-muted-foreground text-center py-12">
+            No books in this category yet.
+          </p>
+        )}
       </section>
     </Layout>
   );
