@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Libre Baskerville", "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Crimson Text", "Georgia", "serif"],
+        sans: ["system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

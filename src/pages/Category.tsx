@@ -11,10 +11,10 @@ const Category = () => {
   if (!category) {
     return (
       <Layout>
-        <section className="container-narrow py-12">
-          <h1 className="editorial-headline mb-4">Category not found</h1>
-          <p className="text-muted-foreground">
-            <Link to="/categories" className="text-link">Return to categories</Link>
+        <section className="container-narrow py-6">
+          <h1 className="catalogue-title mb-2">Category not found</h1>
+          <p className="text-sm text-muted-foreground">
+            <Link to="/categories">Return to categories</Link>
           </p>
         </section>
       </Layout>
@@ -23,29 +23,29 @@ const Category = () => {
 
   return (
     <Layout>
-      <section className="container-narrow py-12">
+      <section className="container-narrow py-6">
         {/* Breadcrumb */}
-        <nav className="mb-6">
-          <ol className="flex items-center gap-2 text-xs text-muted-foreground">
-            <li><Link to="/" className="hover:text-foreground">Home</Link></li>
+        <nav className="mb-3">
+          <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <li><Link to="/">Home</Link></li>
             <li>/</li>
-            <li><Link to="/categories" className="hover:text-foreground">Categories</Link></li>
+            <li><Link to="/categories">Categories</Link></li>
             <li>/</li>
             <li className="text-foreground">{category.name}</li>
           </ol>
         </nav>
 
-        <h1 className="editorial-headline mb-4">{category.name}</h1>
-        <p className="body-text text-muted-foreground max-w-2xl mb-10">
+        <h1 className="catalogue-title mb-2">{category.name}</h1>
+        <p className="text-sm text-muted-foreground max-w-lg mb-4">
           {category.description}
         </p>
         
-        <div className="border-t border-border-subtle pt-8">
-          <p className="uppercase-label text-muted-foreground mb-6">
+        <div className="border-t border-border-subtle pt-4">
+          <p className="section-label mb-3">
             {categoryBooks.length} {categoryBooks.length === 1 ? 'title' : 'titles'}
           </p>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-8">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-3 gap-y-4">
             {categoryBooks.map(book => (
               <BookCard
                 key={book.id}
@@ -59,7 +59,7 @@ const Category = () => {
           </div>
           
           {categoryBooks.length === 0 && (
-            <p className="text-muted-foreground">No books in this category yet.</p>
+            <p className="text-sm text-muted-foreground">No books in this category yet.</p>
           )}
         </div>
       </section>

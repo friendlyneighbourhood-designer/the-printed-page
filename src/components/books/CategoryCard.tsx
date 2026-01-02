@@ -9,17 +9,15 @@ interface CategoryCardProps {
 
 const CategoryCard = ({ slug, name, bookCount, coverImage }: CategoryCardProps) => {
   return (
-    <Link to={`/category/${slug}`} className="block group">
-      <div className="aspect-[3/4] bg-muted mb-2 overflow-hidden">
+    <Link to={`/category/${slug}`} className="block">
+      <div className="aspect-[3/4] bg-muted mb-1 overflow-hidden">
         <img 
           src={coverImage} 
           alt={name}
           className="w-full h-full object-cover"
         />
       </div>
-      <h3 className="font-serif text-sm font-bold leading-tight group-hover:text-link">
-        {name}
-      </h3>
+      <p className="text-xs leading-tight">{name}</p>
       <p className="text-xs text-muted-foreground">{bookCount} titles</p>
     </Link>
   );

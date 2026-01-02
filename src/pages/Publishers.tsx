@@ -2,7 +2,6 @@ import Layout from "@/components/layout/Layout";
 import { books } from "@/data/books";
 
 const Publishers = () => {
-  // Get unique publishers and count their books
   const publisherCounts = books.reduce((acc, book) => {
     acc[book.publisher] = (acc[book.publisher] || 0) + 1;
     return acc;
@@ -13,19 +12,18 @@ const Publishers = () => {
 
   return (
     <Layout>
-      <section className="container-narrow py-12">
-        <h1 className="editorial-headline mb-4">Publishers</h1>
-        <p className="body-text text-muted-foreground max-w-2xl mb-10">
-          We partner with leading academic and trade publishers to bring you quality editions 
-          of essential texts. Below is a list of publishers represented in our catalogue.
+      <section className="container-narrow py-6">
+        <h1 className="catalogue-title mb-2">Publishers</h1>
+        <p className="text-sm text-muted-foreground max-w-lg mb-4">
+          Publishers represented in our catalogue.
         </p>
         
-        <div className="border-t border-border-subtle pt-8">
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+        <div className="border-t border-border-subtle pt-4">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1.5 text-sm">
             {publishers.map(([publisher, count]) => (
-              <li key={publisher} className="flex justify-between items-baseline border-b border-border-subtle pb-3">
-                <span className="font-serif">{publisher}</span>
-                <span className="text-xs text-muted-foreground">{count} {count === 1 ? 'title' : 'titles'}</span>
+              <li key={publisher} className="flex justify-between border-b border-border-subtle py-1.5">
+                <span>{publisher}</span>
+                <span className="text-xs text-muted-foreground">{count}</span>
               </li>
             ))}
           </ul>
